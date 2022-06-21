@@ -1,18 +1,32 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+  <a-layout style="height: 100vh">
+    <a-layout-sider v-model="collapsed" collapsible theme="light">
+      <ListView />
+    </a-layout-sider>
+    <a-layout-content style="margin: 0 16px">
+      <ConteView />
+    </a-layout-content>
+  </a-layout>
 </template>
-
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
-
-@Options({
+<script lang='ts'>
+import ListView from '@/components/ListView.vue'
+import ConteView from '@/components/ConteView.vue'
+import { defineComponent, ref } from 'vue';
+import draggable from 'vuedraggable';
+export default defineComponent({
+  name: 'home',
   components: {
-    HelloWorld,
+    ListView,
+    draggable,
+    ConteView
   },
+  setup() {
+    const collapsed = ref<boolean>(false)
+    const likeList = ref([{ id: 1, name: 'Option' }, { id: 2, name: 'Option' }, { id: 3, name: 'Option' }, { id: 4, name: 'Option' }])
+    return {
+      collapsed,
+      likeList
+    }
+  }
 })
-export default class HomeView extends Vue {}
 </script>
