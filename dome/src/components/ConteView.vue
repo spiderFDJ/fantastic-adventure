@@ -9,23 +9,11 @@
     </draggable>
   </div>
 </template>
-<script lang='ts'>
+<script setup lang='ts'>
 import { defineComponent, ref } from 'vue'
 import draggable from 'vuedraggable';
-export default defineComponent({
-  name: 'conte',
-  components: {
-    draggable
-  },
-  setup() {
-    const active = ref('')
-    const likeList = ref([])
-    return {
-      likeList,
-      active
-    }
-  }
-})
+const active = ref('')
+const likeList = ref([])
 </script>
 <style scoped>
 .content {
